@@ -76,13 +76,13 @@ print("El score R^2 es :", R2 ,"\n")
 # 2.CLASIFICACION
 
 # Cargamos el conjunto de datos
-diabetes = load_digits()
+digits = load_digits()
 
 # Dividimos los datos en conjuntos de entrenamiento y prueba
-x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(diabetes.data, diabetes.target, test_size=0.2, random_state=50)
+x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
 
-# diabetes.data      contiene las características del conjunto de datos.
-# diabetes.target    contiene las etiquetas asociadas a cada muestra.
+# digits.data      contiene las características del conjunto de datos.
+# digits.target    contiene las etiquetas asociadas a cada muestra.
 # test_size          Tenemos un 80% de datos de entrenamiento y un 20% de datos de evaluacion.
 
 
