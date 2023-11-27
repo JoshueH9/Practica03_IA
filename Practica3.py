@@ -83,7 +83,7 @@ print("\n 2.CLASIFICACION \n")
 # Cargamos el conjunto de datos
 digits = load_digits()
 
-    # Perceptrón
+    # B) Perceptrón
 
 # Dividimos los datos en conjuntos de entrenamiento y prueba
 x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
@@ -93,7 +93,7 @@ x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(
 # test_size          Tenemos un 80% de datos de entrenamiento y un 20% de datos de evaluacion.
 
 
-    # Arbol de decisión
+    # C) Arbol de decisión
 
 # Dividimos los datos en conjuntos de entrenamiento y prueba
 x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
@@ -102,7 +102,7 @@ x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(
 # digits.target    contiene las etiquetas asociadas a cada muestra.
 # test_size          Tenemos un 80% de datos de entrenamiento y un 20% de datos de evaluacion.
 
-    # C) k-NN
+    # D) k-NN
 
 # Dividimos los datos en conjuntos de entrenamiento y prueba
 x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
@@ -138,6 +138,10 @@ y_predicciones = predecir(x_entrenamiento, y_entrenamiento, x_evaluacion, k)
 precision = np.mean(y_predicciones == y_evaluacion)
 
 print("Precisión del modelo k-NN: ", precision)
+
+    # E) Evaluar los datos, comparando el resultado de los tres modelos.
+
+
 
 # 3.AGRUPAMIENTO
 
