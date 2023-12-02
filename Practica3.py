@@ -9,7 +9,10 @@ from sklearn import datasets
 from sklearn.datasets import load_diabetes
 from sklearn.datasets import load_digits
 from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
 import numpy as np 
+
+import matplotlib.pyplot as plt
 
 
 # 1.REGRESION
@@ -147,4 +150,17 @@ print("Precisión del modelo k-NN: ", precision)
 
 print("\n 3.AGRUPAMIENTO \n")
 
+# Generamos 1000 datos para agrupamiento con 3 centroides:
 x,y = datasets.make_blobs(1000, centers = 3)
+
+# A) Aplicamos el algoritmo de k-medias para agrupar los datos.
+kmeans = KMeans(n_clusters=3)
+kmeans.fit(x)
+etiquetas_clusters = kmeans.labels_
+
+# B) Visualizamos los datos y los grupos obtenidos por el algoritmo de k-medias.
+plt.scatter(x[:, 0], x[:, 1], c=etiquetas_clusters, cmap='viridis')
+plt.title('Agrupamiento con k-medias')
+plt.show()
+
+
