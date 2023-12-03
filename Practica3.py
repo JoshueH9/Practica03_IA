@@ -5,6 +5,10 @@ from hmmlearn.hmm import CategoricalHMM
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer
 
+from sklearn.linear_model import Perceptron
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import top_k_accuracy_score
+
 from sklearn import datasets
 from sklearn.datasets import load_diabetes
 from sklearn.datasets import load_digits
@@ -86,24 +90,42 @@ print("\n 2.CLASIFICACION \n")
 # Cargamos el conjunto de datos
 digits = load_digits()
 
-    # B) Perceptrón
+    # A) Separación de datos de entrenamiento
 
 # Dividimos los datos en conjuntos de entrenamiento y prueba
-x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
+x_entrenamientoP, x_evaluacionP, y_entrenamientoP, y_evaluacionP = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
 
 # digits.data      contiene las características del conjunto de datos.
 # digits.target    contiene las etiquetas asociadas a cada muestra.
 # test_size          Tenemos un 80% de datos de entrenamiento y un 20% de datos de evaluacion.
 
+    # B) Perceptron
+perceptronP = Perceptron()
+perceptronP.fit(x_entrenamientoP, y_entrenamientoP)
+
+#Evaluciones del perceptron
+predicciones_perceptron = perceptronP.predict(x_evaluacionP)
+precision_perceptron = accuracy_score(y_evaluacionP, predicciones_perceptron)
+print("Precision del Perceptron:", precision_perceptron)
 
     # C) Arbol de decisión
 
-# Dividimos los datos en conjuntos de entrenamiento y prueba
-x_entrenamiento, x_evaluacion, y_entrenamiento, y_evaluacion = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
-
+# Dividimos los datos en conjuntos de entrenamiento y prueba de nuevo
+x_entrenamientoA, x_evaluacionA, y_entrenamientoA, y_evaluacionA = train_test_split(digits.data, digits.target, test_size=0.2, random_state=50)
 # digits.data      contiene las características del conjunto de datos.
 # digits.target    contiene las etiquetas asociadas a cada muestra.
 # test_size          Tenemos un 80% de datos de entrenamiento y un 20% de datos de evaluacion.
+
+# Entrenar el Árbol de decisión
+arbol = DecisionTreeClassifier()
+arbol.fit(x_entrenamientoA, y_entrenamientoA)
+
+# Evaluar el Árbol de decisión
+predicciones_arbol = arbol.predict(x_evaluacionA)
+precision_arbol = accuracy_score(y_evaluacionA, predicciones_arbol)
+print("Precisión del Árbol de decisión:", precision_arbol)
+
+
 
     # D) k-NN
 
