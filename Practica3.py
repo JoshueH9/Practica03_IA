@@ -1,3 +1,4 @@
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.ensemble import RandomForestClassifier
@@ -165,7 +166,15 @@ precision = np.mean(y_predicciones == y_evaluacion)
 print("Precisión del modelo k-NN: ", precision)
 
     # E) Evaluar los datos, comparando el resultado de los tres modelos.
+print("\nEvaluacion de Datos:\n")
+print("Perceptron:")
+print(print(classification_report(y_evaluacionP, predicciones_perceptron)))
 
+print("Arbol de decisiones:")
+print(print(classification_report(y_evaluacionA, predicciones_arbol)))
+
+print("K-NN:")
+print(print(classification_report(y_evaluacion, y_predicciones)))
 
 
 # 3.AGRUPAMIENTO
